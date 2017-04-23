@@ -13,15 +13,15 @@ print("starting")
 pi = math.pi
 
 cam = bpy.data.objects['Camera']
-path = "/home/ben/projects/learn_map/blenderpics/"
+path = "/home/ben/jects/learn_map/blenderpics/"
 
 positions = []
 
 def renderImage(name):
     scene = bpy.data.scenes['Scene']
     bpy.data.scenes['Scene'].render.filepath = path + str(name) + ".jpg"
-    scene.render.resolution_x = 64
-    scene.render.resolution_y = 64
+    scene.render.resolution_x = 128
+    scene.render.resolution_y = 128
 
     #bpy.ops.render.render( write_still=True )
     #opengl render looks like crap but is waaayyyyyyy faster
@@ -29,9 +29,9 @@ def renderImage(name):
 
 
 for i in range(1000):
-    y_pos = 0.0 + random.uniform(-2,2)
-    cam.location = mathutils.Vector((0.0, y_pos, 2.0))
-    positions.append(y_pos)
+    x_pos = 0.0 + random.uniform(-5,5)
+    cam.location = mathutils.Vector((x_pos, -10.0, 3.5))
+    positions.append(x_pos)
 
     renderImage(i)
 
